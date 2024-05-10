@@ -1,0 +1,3 @@
+CatBoostClassifier:
+  iterations: 52
+  depth: 7

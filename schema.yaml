@@ -1,0 +1,24 @@
+COLUMNS:
+  destination: float64
+  passanger: float64
+  weather: float64
+  temparature: float64
+  time: float64
+  coupon: float64
+  expiration: float64
+  gender: float64
+  age: float64
+  maritalStatus: float64
+  has_children: int64
+  education: float64
+  income: float64
+  Y: int64
+  to_coupon: int64
+  coupon_freq: float64
+  occupation_class: int64
+  
+
+
+TARGET_COLUMN:
+  name: Y
+  

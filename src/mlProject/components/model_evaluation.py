@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
 from urllib.parse import urlparse
 import mlflow
 import mlflow.sklearn
@@ -17,10 +17,12 @@ class ModelEvaluation:
 
     
     def eval_metrics(self,actual, pred):
-        rmse = np.sqrt(mean_squared_error(actual, pred))
-        mae = mean_absolute_error(actual, pred)
-        r2 = r2_score(actual, pred)
-        return rmse, mae, r2
+        accuracy = accuracy_score(actual, pred)
+        precision = precision_score(actual, pred)
+        recall = recall_score(actual, pred)
+        f1 = f1_score(actual, pred)
+        roc_auc = roc_auc_score(actual, pred)
+        return accuracy, precision, recall, f1, roc_auc
     
 
 
@@ -41,18 +43,19 @@ class ModelEvaluation:
 
             predicted_qualities = model.predict(test_x)
 
-            (rmse, mae, r2) = self.eval_metrics(test_y, predicted_qualities)
+            (accuracy, precision, recall, f1, roc_auc) = self.eval_metrics(test_y, predicted_qualities)
             
             # Saving metrics as local
-            scores = {"rmse": rmse, "mae": mae, "r2": r2}
+            scores = {"accuracy": accuracy, "precision": precision, "recall": recall, "f1": f1, "roc_auc": roc_auc}
             save_json(path=Path(self.config.metric_file_name), data=scores)
 
             mlflow.log_params(self.config.all_params)
 
-            mlflow.log_metric("rmse", rmse)
-            mlflow.log_metric("r2", r2)
-            mlflow.log_metric("mae", mae)
-
+            mlflow.log_metric("accuracy", accuracy)
+            mlflow.log_metric("precision", precision)
+            mlflow.log_metric("recall", recall)
+            mlflow.log_metric("f1", f1)
+            mlflow.log_metric("roc_auc", roc_auc)
 
             # Model registry does not work with file store
             if tracking_url_type_store != "file":
@@ -61,7 +64,7 @@ class ModelEvaluation:
                 # There are other ways to use the Model Registry, which depends on the use case,
                 # please refer to the doc for more information:
                 # https://mlflow.org/docs/latest/model-registry.html#api-workflow
-                mlflow.sklearn.log_model(model, "model", registered_model_name="ElasticnetModel")
+                mlflow.sklearn.log_model(model, "model", registered_model_name="CatBoostClassifier")
             else:
                 mlflow.sklearn.log_model(model, "model")
 

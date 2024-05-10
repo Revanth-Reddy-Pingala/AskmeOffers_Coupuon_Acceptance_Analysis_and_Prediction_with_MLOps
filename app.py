@@ -23,20 +23,25 @@ def index():
     if request.method == 'POST':
         try:
             #  reading the inputs given by the user
-            fixed_acidity =float(request.form['fixed_acidity'])
-            volatile_acidity =float(request.form['volatile_acidity'])
-            citric_acid =float(request.form['citric_acid'])
-            residual_sugar =float(request.form['residual_sugar'])
-            chlorides =float(request.form['chlorides'])
-            free_sulfur_dioxide =float(request.form['free_sulfur_dioxide'])
-            total_sulfur_dioxide =float(request.form['total_sulfur_dioxide'])
-            density =float(request.form['density'])
-            pH =float(request.form['pH'])
-            sulphates =float(request.form['sulphates'])
-            alcohol =float(request.form['alcohol'])
+            destination = float(request.form['destination'])
+            passanger = float(request.form['passanger'])
+            weather = float(request.form['weather'])
+            temparature = float(request.form['temparature'])
+            time = float(request.form['time'])
+            coupon = float(request.form['coupon'])
+            expiration = float(request.form['expiration'])
+            gender = float(request.form['gender'])
+            age = float(request.form['age'])
+            maritalStatus = float(request.form['maritalStatus'])
+            has_children = int(request.form['has_children'])
+            education = float(request.form['education'])
+            income = float(request.form['income'])
+            to_coupon = int(request.form['to_coupon'])
+            coupon_freq = float(request.form['coupon_freq'])
+            occupation_class = int(request.form['occupation_class'])
        
          
-            data = [fixed_acidity,volatile_acidity,citric_acid,residual_sugar,chlorides,free_sulfur_dioxide,total_sulfur_dioxide,density,pH,sulphates,alcohol]
+            data = [destination, passanger, weather, temparature, time, coupon, expiration, gender, age, maritalStatus, has_children, education, income, Y, to_coupon, coupon_freq, occupation_class]
             data = np.array(data).reshape(1, 11)
             
             obj = PredictionPipeline()

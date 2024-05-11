@@ -41,17 +41,22 @@ def index():
             occupation_class = int(request.form['occupation_class'])
        
          
-            data = [destination, passanger, weather, temparature, time, coupon, expiration, gender, age, maritalStatus, has_children, education, income, Y, to_coupon, coupon_freq, occupation_class]
-            data = np.array(data).reshape(1, 11)
+            data = [destination, passanger, weather, temparature, time, coupon, expiration, gender, age, maritalStatus, has_children, education, income, to_coupon, coupon_freq, occupation_class]
+            data = np.array(data).reshape(1, 16)
             
             obj = PredictionPipeline()
             predict = obj.predict(data)
+
+            if predict == 1:
+                predict = "Coupon will be accepted"
+            else:
+                predict = "Coupon will not be accepted"
 
             return render_template('results.html', prediction = str(predict))
 
         except Exception as e:
             print('The Exception message is: ',e)
-            return 'something is wrong'
+            return 'Something is Wrong'
 
     else:
         return render_template('index.html')

@@ -1,5 +1,10 @@
 
-# AskmeOffers_Coupuon_Acceptance_Analysis_and_Prediction_with_MLOps(Mlflow)
+# Coupuon Acceptance Analysis and Prediction with MLOps(Mlflow) for AskmeOffers
+
+## AskmeOffers sample Project
+- It's an End to End Project covering all the required steps in a Data Science Project with Web Interface.
+- Coded pipelines for every required stage of the lifecycle for this particular DS Project.
+- Deployable and Production Ready project.
 
 ## Business Understanding:
 
@@ -37,7 +42,7 @@
 ## Tech Stack Used
 - Python, Colab, Flask, Html, CSS, JavaScript
 - Dagshub, Mlflow, Conda virtual environment
-- VS Code
+- VS Code, several Machine learning modules in Pythom
 
 ## Workflows
 
@@ -90,8 +95,7 @@ Now,
 open up you local host and port
 ```
 
-### Dagshub
-[Dagshub](https://dagshub.com/)
+### Dagshub [![Dagshub](https://img.shields.io/badge/Dagshub-blue)](https://dagshub.com/)
 
 MLFLOW_TRACKING_URI=https://dagshub.com/Revanth-Reddy-Pingala/AskmeOffers_Project.mlflow \
 MLFLOW_TRACKING_USERNAME=Revanth-Reddy-Pingala \
@@ -131,5 +135,8 @@ MLflow
 [![Blogger](https://img.shields.io/badge/Blogger-FF5722?style=for-the-badge&logo=blogger&logoColor=white)](https://rrdatadiaries.blogspot.com/)
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/revanth_reddy.1459/)
 [![X](https://img.shields.io/badge/X-4285F4?style=for-the-badge&logo=x&logoColor=white)](https://twitter.com/Revanth_R79)
+
+
+
 
 
